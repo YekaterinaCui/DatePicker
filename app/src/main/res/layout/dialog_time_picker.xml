@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:gravity="bottom|center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_time_dialog"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="11dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/img_chose_time" />
+
+        <LinearLayout
+            android:id="@+id/ll_show_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/year" />
+
+            <TextView
+                android:id="@+id/tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/month_abbreviations" />
+
+            <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/day" />
+
+            <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/hour" />
+
+            <TextView
+                android:id="@+id/tv_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/minute_abbreviations" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            tools:context="com.example.lenovo.customizeview.activity.DatePickerActivity">
+
+            <cn.carbswang.android.numberpickerview.library.NumberPickerView
+                android:id="@+id/year_picker"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:npv_DividerColor="@color/color_green_3bb4bc"
+                app:npv_DividerHeight="2dp"
+                app:npv_DividerMarginRight="3dp"
+                app:npv_HintText="@string/year"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowCount="3"
+                app:npv_TextColorHint="@color/color_green_3bb4bc"
+                app:npv_TextColorNormal="@color/color_black_0e1214"
+                app:npv_TextColorSelected="@color/color_green_3bb4bc"
+                app:npv_TextSizeNormal="12sp"
+                app:npv_TextSizeSelected="15sp"
+                app:npv_WrapSelectorWheel="false" />
+
+            <cn.carbswang.android.numberpickerview.library.NumberPickerView
+                android:id="@+id/month_picker"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:npv_DividerColor="@color/color_green_3bb4bc"
+                app:npv_DividerHeight="2dp"
+                app:npv_DividerMarginRight="3dp"
+                app:npv_HintText="@string/month_abbreviations"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowCount="3"
+                app:npv_TextColorHint="@color/color_green_3bb4bc"
+                app:npv_TextColorNormal="@color/color_black_0e1214"
+                app:npv_TextColorSelected="@color/color_green_3bb4bc"
+                app:npv_TextSizeNormal="12sp"
+                app:npv_TextSizeSelected="15sp"
+                app:npv_WrapSelectorWheel="true" />
+
+            <cn.carbswang.android.numberpickerview.library.NumberPickerView
+                android:id="@+id/day_picker"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:npv_DividerColor="@color/color_green_3bb4bc"
+                app:npv_DividerHeight="2dp"
+                app:npv_DividerMarginRight="3dp"
+                app:npv_HintText="@string/day"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowCount="3"
+                app:npv_TextColorHint="@color/color_green_3bb4bc"
+                app:npv_TextColorNormal="@color/color_black_0e1214"
+                app:npv_TextColorSelected="@color/color_green_3bb4bc"
+                app:npv_TextSizeNormal="12sp"
+                app:npv_TextSizeSelected="15sp"
+                app:npv_WrapSelectorWheel="true" />
+
+            <cn.carbswang.android.numberpickerview.library.NumberPickerView
+                android:id="@+id/hour_picker"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="0.5"
+                android:visibility="visible"
+                app:npv_DividerColor="@color/color_green_3bb4bc"
+                app:npv_DividerHeight="2dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowCount="3"
+                app:npv_TextColorNormal="@color/color_black_0e1214"
+                app:npv_TextColorSelected="@color/color_green_3bb4bc"
+                app:npv_TextSizeNormal="12sp"
+                app:npv_TextSizeSelected="15sp"
+                app:npv_WrapSelectorWheel="true" />
+
+            <TextView
+                android:id="@+id/tv_time_separator"
+                android:layout_width="3dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/colon"
+                android:textColor="@color/color_green_3bb4bc"
+                android:visibility="visible" />
+
+            <cn.carbswang.android.numberpickerview.library.NumberPickerView
+                android:id="@+id/minute_picker"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="0.5"
+                android:visibility="visible"
+                app:npv_DividerColor="@color/color_green_3bb4bc"
+                app:npv_DividerHeight="2dp"
+                app:npv_ItemPaddingVertical="5dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowCount="3"
+                app:npv_TextColorNormal="@color/color_black_0e1214"
+                app:npv_TextColorSelected="@color/color_green_3bb4bc"
+                app:npv_TextSizeNormal="12sp"
+                app:npv_TextSizeSelected="15sp"
+                app:npv_WrapSelectorWheel="true" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_time_dialog"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_time_dialog_bg"
+            android:text="@string/cancel"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_time_dialog_bg"
+            android:text="@string/sure"
+            android:textColor="@color/color_green_3bb4bc"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
