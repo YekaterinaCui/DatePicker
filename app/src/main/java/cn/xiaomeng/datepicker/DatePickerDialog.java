@@ -1,4 +1,4 @@
-package cn.cuixiaomeng.datepicker;
+package cn.xiaomeng.datepicker;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -22,11 +22,11 @@ import java.util.List;
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
 
 /**
- * 时间选择器
+ * 日期选择器
  * Created by cj on 2017/1/19.
  */
 
-public class TimePickerDialog extends Dialog {
+public class DatePickerDialog extends Dialog {
 
 
     private String[] years = new String[191];
@@ -46,13 +46,13 @@ public class TimePickerDialog extends Dialog {
 
     private Calendar calendar = Calendar.getInstance();
     private int year = calendar.get(Calendar.YEAR);
-    private int month = calendar.get(Calendar.MONTH);
 
     private int currentYear = calendar.get(Calendar.YEAR);
     private int currentMonth = calendar.get(Calendar.MONTH) + 1;
     private int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
     private int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
     private int currentMinute = calendar.get(Calendar.MINUTE);
+
 
     private OnSureOnClickListener onSureOnClickListener;
     private OnCancelOnClickListener onCancelOnClickListener;
@@ -71,8 +71,7 @@ public class TimePickerDialog extends Dialog {
     private Button cancel;
     private Button sure;
 
-
-    public TimePickerDialog(Context context) {
+    public DatePickerDialog(Context context) {
         super(context);
     }
 
@@ -80,7 +79,7 @@ public class TimePickerDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_time_picker);
+        setContentView(R.layout.dialog_date_picker);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getWindow().setGravity(Gravity.BOTTOM);
         getWindow().setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -202,7 +201,7 @@ public class TimePickerDialog extends Dialog {
         hourPicker.setOnValueChangedListener(new NumberPickerView.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPickerView picker, int oldVal, int newVal) {
-                Log.d("hour", String.valueOf(+newVal));
+                Log.d("hour", String.valueOf(newVal));
                 tvHour.setText(String.valueOf(newVal));
             }
         });
@@ -217,9 +216,9 @@ public class TimePickerDialog extends Dialog {
         dayPicker.setDisplayedValues(days);
         dayPicker.setMinValue(1);
         // 判断大小月及是否闰年,用来确定"日"的数据
-        if (list_big.contains(String.valueOf(month + 1))) {
+        if (list_big.contains(String.valueOf(currentMonth))) {
             dayPicker.setMaxValue(31);
-        } else if (list_little.contains(String.valueOf(month + 1))) {
+        } else if (list_little.contains(String.valueOf(currentMonth))) {
             dayPicker.setMaxValue(30);
         } else {
             // 闰年
@@ -268,8 +267,8 @@ public class TimePickerDialog extends Dialog {
                 } else if (list_little.contains(String.valueOf(monthNum))) {
                     dayPicker.setMaxValue(30);
                 } else {
-                    if (((yearPicker.getValue()) % 4 == 0 && (yearPicker.getValue()) % 100 != 0)
-                            || (yearPicker.getValue()) % 400 == 0) {
+                    if ((yearPicker.getValue() % 4 == 0 && yearPicker.getValue() % 100 != 0)
+                            || yearPicker.getValue() % 400 == 0) {
                         dayPicker.setMaxValue(29);
                     } else {
                         dayPicker.setMaxValue(28);
@@ -333,14 +332,6 @@ public class TimePickerDialog extends Dialog {
     }
 
     private void initView() {
-        yearPicker = (NumberPickerView) findViewById(R.id.year_picker);
-        monthPicker = (NumberPickerView) findViewById(R.id.month_picker);
-        dayPicker = (NumberPickerView) findViewById(R.id.day_picker);
-        hourPicker = (NumberPickerView) findViewById(R.id.hour_picker);
-        tvTimeSeparator = (TextView) findViewById(R.id.tv_time_separator);
-        minutePicker = (NumberPickerView) findViewById(R.id.minute_picker);
-        cancel = (Button) findViewById(R.id.cancel);
-        sure = (Button) findViewById(R.id.sure);
         llShowTime = (LinearLayout) findViewById(R.id.ll_show_time);
         tvYear = (TextView) findViewById(R.id.tv_year);
         tvMonth = (TextView) findViewById(R.id.tv_month);

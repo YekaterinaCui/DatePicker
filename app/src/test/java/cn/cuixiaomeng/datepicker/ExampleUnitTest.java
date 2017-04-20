@@ -1,4 +1,4 @@
-package cn.cuixiaomeng.datepicker;
+package cn.xiaomeng.datepicker;
 
 import org.junit.Test;
 

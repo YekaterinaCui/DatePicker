@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -7,7 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -15,6 +16,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -29,3 +33,23 @@ dependencies {
     //数字选择器
     compile 'cn.carbswang.android:NumberPickerView:1.1.1'
 }
+
+publish {
+    userOrg = 'jingcui'
+    groupId = 'cn.xiaomeng'
+    artifactId = 'datepicker'
+    publishVersion = '1.0.0'
+    desc = 'date picker'
+    website = 'https://github.com/YekaterinaCui/DatePicker'
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+// ./gradlew clean build bintrayUpload -PbintrayUser=jingcui -PbintrayKey= -PdryRun=false

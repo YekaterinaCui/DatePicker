@@ -1,4 +1,4 @@
-package cn.cuixiaomeng.datepicker;
+package cn.xiaomeng.datepicker;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.cuixiaomeng.datepicker", appContext.getPackageName());
+        assertEquals("cn.xiaomeng.datepicker", appContext.getPackageName());
     }
 }
