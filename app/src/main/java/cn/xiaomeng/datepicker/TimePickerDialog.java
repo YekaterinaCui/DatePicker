@@ -89,6 +89,7 @@ public class TimePickerDialog extends Dialog {
         //设置 Dialog 的背景透明度 (范围从 0.0 ~ 1.0 ， 1.0 表示完全不透明)
         //getWindow().getAttributes().alpha = 0.5f;
         setCanceledOnTouchOutside(true);
+        initView();
         initBtnClickEvent();
         setYear(yearPicker, dayPicker, monthPicker);
         setMonth(monthPicker, dayPicker, yearPicker);
