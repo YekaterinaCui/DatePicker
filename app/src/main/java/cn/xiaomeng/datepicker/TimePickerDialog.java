@@ -1,4 +1,4 @@
-package com.example.sample;
+package cn.xiaomeng.datepicker;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,19 +18,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.carbswang.android.numberpickerview.library.NumberPickerView;
 import cn.xiaomeng.datepicker.tools.DateUtil;
 
-/**
- * 时间选择器
- * Created by cj on 2017/1/19.
- */
 
+/**
+ * 类名：TimePickerDialog
+ * 编辑时间：2018/2/6
+ * 编辑人：崔婧
+ * 简介：时间选择器
+ */
 public class TimePickerDialog extends Dialog {
 
-    public TimePickerDialog(Context context) {
+    TimePickerDialog(Context context) {
         super(context);
     }
 
@@ -52,6 +54,7 @@ public class TimePickerDialog extends Dialog {
         private final List<String> littleMonthList = Arrays.asList(littleMonthArray);
 
         private Calendar calendar = Calendar.getInstance();
+        private String currentTime = DateUtil.format(calendar.getTime(), "yyyy-MM-dd HH:mm:ss");
         private int currentYear = calendar.get(Calendar.YEAR);
         private int currentMonth = calendar.get(Calendar.MONTH) + 1;
         private int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
@@ -66,95 +69,128 @@ public class TimePickerDialog extends Dialog {
         private boolean hideMinute;
         private boolean hideSecond;
 
-        private Integer year;
-        private Integer month;
-        private Integer day;
-        private Integer hour;
-        private Integer minute;
-        private Integer second;
+        private String time = currentTime;
+        private int year = currentYear;
+        private int month = currentMonth;
+        private int day = currentDay;
+        private int hour = currentHour;
+        private int minute = currentMinute;
+        private int second = currentSecond;
 
-        private String leftBtnText;
-        private String rightBtnText;
-        private Integer leftBtnTextColor;
-        private Integer rightBtnTextColor;
+        private String leftBtnText = "取消";
+        private String rightBtnText = "确定";
+        private Integer leftBtnTextColor = R.color.color_gray_a5a6a5;
+        private Integer rightBtnTextColor = R.color.color_gray_a5a6a5;
 
         private OnLeftBtnOnClickListener onLeftBtnOnClickListener;
         private OnRightBtnOnClickListener onRightBtnOnClickListener;
 
-        public void setHideYear(boolean hideYear) {
+        public Builder setHideYear(boolean hideYear) {
             this.hideYear = hideYear;
+            return this;
         }
 
-        public void setHideMonth(boolean hideMonth) {
+        public Builder setHideMonth(boolean hideMonth) {
             this.hideMonth = hideMonth;
+            return this;
         }
 
-        public void setHideDay(boolean hideDay) {
+        public Builder setHideDay(boolean hideDay) {
             this.hideDay = hideDay;
+            return this;
         }
 
-        public void setHideHour(boolean hideHour) {
+        public Builder setHideHour(boolean hideHour) {
             this.hideHour = hideHour;
+            return this;
         }
 
-        public void setHideMinute(boolean hideMinute) {
+        public Builder setHideMinute(boolean hideMinute) {
             this.hideMinute = hideMinute;
+            return this;
         }
 
-        public void setHideSecond(boolean hideSecond) {
+        public Builder setHideSecond(boolean hideSecond) {
             this.hideSecond = hideSecond;
+            return this;
         }
 
-        public void setYear(Integer year) {
-            this.year = null == year ? currentYear : year;
+        public Builder setTime(String time) {
+            this.time = time;
+            Calendar timeCalender = Calendar.getInstance();
+            timeCalender.setTime(DateUtil.getDate(time));
+            this.year = timeCalender.get(Calendar.YEAR);
+            this.month = timeCalender.get(Calendar.MONTH) + 1;
+            this.day = timeCalender.get(Calendar.DAY_OF_MONTH);
+            this.hour = timeCalender.get(Calendar.HOUR_OF_DAY);
+            this.minute = timeCalender.get(Calendar.MINUTE);
+            this.second = timeCalender.get(Calendar.SECOND);
+            return this;
         }
 
-        // 范围：0-11
-        public void setMonth(Integer month) {
-            this.month = null == month ? currentMonth : month + 1;
+//        public Builder setYear(Integer year) {
+//            this.year = year;
+//            return this;
+//        }
+//
+//        // 范围：0-11
+//        public Builder setMonth(Integer month) {
+//            this.month = month + 1;
+//            return this;
+//        }
+//
+//        public Builder setDay(Integer day) {
+//            this.day = day;
+//            return this;
+//        }
+//
+//        public Builder setHour(Integer hour) {
+//            this.hour = hour;
+//            return this;
+//        }
+//
+//        public Builder setMinute(Integer minute) {
+//            this.minute = minute;
+//            return this;
+//        }
+//
+//        public Builder setSecond(Integer second) {
+//            this.second = second;
+//            return this;
+//        }
+
+        public Builder setLeftBtnText(String leftBtnText) {
+            this.leftBtnText = leftBtnText;
+            return this;
         }
 
-        public void setDay(Integer day) {
-            this.day = null == day ? currentDay : day;
+        public Builder setRightBtnText(String rightBtnText) {
+            this.rightBtnText = rightBtnText;
+            return this;
         }
 
-        public void setHour(Integer hour) {
-            this.hour = null == hour ? currentHour : hour;
+        public Builder setLeftBtnTextColor(Integer leftBtnTextColor) {
+            this.leftBtnTextColor = leftBtnTextColor;
+            return this;
         }
 
-        public void setMinute(Integer minute) {
-            this.minute = null == minute ? currentMinute : minute;
+        public Builder setRightBtnTextColor(Integer rightBtnTextColor) {
+            this.rightBtnTextColor = rightBtnTextColor;
+            return this;
         }
 
-        public void setSecond(Integer second) {
-            this.second = null == second ? currentSecond : second;
-        }
-
-        public void setLeftBtnText(String leftBtnText) {
-            this.leftBtnText = !TextUtils.isEmpty(leftBtnText) ? leftBtnText : "取消";
-        }
-
-        public void setRightBtnText(String rightBtnText) {
-            this.rightBtnText = !TextUtils.isEmpty(rightBtnText) ? rightBtnText : "确定";
-        }
-
-        public void setLeftBtnTextColor(Integer leftBtnTextColor) {
-            this.leftBtnTextColor = null != leftBtnTextColor ? leftBtnTextColor : R.color.color_gray_a5a6a5;
-        }
-
-        public void setRightBtnTextColor(Integer rightBtnTextColor) {
-            this.rightBtnTextColor = null != rightBtnTextColor ? rightBtnTextColor : R.color.color_gray_a5a6a5;
-        }
-
-        public void setOnLeftBtnOnClickListener(OnLeftBtnOnClickListener onLeftBtnOnClickListener) {
+        public Builder setOnLeftBtnOnClickListener(OnLeftBtnOnClickListener onLeftBtnOnClickListener) {
             this.onLeftBtnOnClickListener = onLeftBtnOnClickListener;
+            return this;
         }
 
-        public void setOnRightBtnOnClickListener(OnRightBtnOnClickListener onRightBtnOnClickListener) {
+        public Builder setOnRightBtnOnClickListener(OnRightBtnOnClickListener onRightBtnOnClickListener) {
             this.onRightBtnOnClickListener = onRightBtnOnClickListener;
+            return this;
         }
 
         public TimePickerDialog create(Context context) {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(context);
             View contentView = LayoutInflater.from(context).inflate(R.layout.dialog_time_picker, null);
 
             NumberPickerView pvYear = contentView.findViewById(R.id.pv_year);
@@ -167,10 +203,12 @@ public class TimePickerDialog extends Dialog {
             NumberPickerView pvSecond = contentView.findViewById(R.id.pv_second);
             Button btnLeft = contentView.findViewById(R.id.btn_left);
             Button btnRight = contentView.findViewById(R.id.btn_right);
-            setView(context, pvYear, pvMonth, pvDay, pvHour, pvMinute, pvSecond, tvSeparatorOfMinute, tvSeparatorOfSecond, btnLeft, btnRight);
-            setTime(pvYear, pvMonth, pvDay, pvHour, pvMinute, pvSecond, year, month, day, hour, minute, second);
-
-            TimePickerDialog timePickerDialog = new TimePickerDialog(context);
+            setView(context, timePickerDialog, pvYear, pvMonth, pvDay, pvHour, pvMinute, pvSecond,
+                    tvSeparatorOfMinute, tvSeparatorOfSecond, btnLeft, btnRight
+            );
+            setTime(pvYear, pvMonth, pvDay, pvHour, pvMinute, pvSecond, year, month, day, hour,
+                    minute, second
+            );
             timePickerDialog.addContentView(
                     contentView,
                     new ViewGroup.LayoutParams(
@@ -181,7 +219,8 @@ public class TimePickerDialog extends Dialog {
             return timePickerDialog;
         }
 
-        private void setView(Context context, final NumberPickerView pvYear, final NumberPickerView pvMonth,
+        private void setView(Context context, final TimePickerDialog timePickerDialog,
+                             final NumberPickerView pvYear, final NumberPickerView pvMonth,
                              final NumberPickerView pvDay, final NumberPickerView pvHour,
                              final NumberPickerView pvMinute, final NumberPickerView pvSecond,
                              TextView tvSeparatorOfMinute, TextView tvSeparatorOfSecond,
@@ -204,7 +243,9 @@ public class TimePickerDialog extends Dialog {
                 @Override
                 public void onClick(View v) {
                     if (onLeftBtnOnClickListener != null) {
-                        onLeftBtnOnClickListener.onLeftBtnClick();
+                        onLeftBtnOnClickListener.onLeftBtnClick(timePickerDialog);
+                    } else {
+                        timePickerDialog.dismiss();
                     }
                 }
             });
@@ -212,30 +253,34 @@ public class TimePickerDialog extends Dialog {
             btnRight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String dateTime = String.format(
-                            "%1$s-%2$s-%3$s %4$s:%5$s:%6$s",
-                            pvYear.getValue(),
-                            pvMonth.getValue(),
-                            pvDay.getValue(),
-                            pvHour.getValue(),
-                            pvMinute.getValue(),
-                            pvSecond.getValue()
-                    );
-                    String time;
-                    if (hideHour && hideMinute && hideSecond) {
-                        time = DateUtil.formatConvert(dateTime, "yyyy-MM-dd");
-                    } else if (hideSecond) {
-                        time = DateUtil.formatConvert(dateTime, "yyyy-MM-dd HH:mm");
-                    } else {
-                        time = dateTime;
-                    }
                     if (onRightBtnOnClickListener != null) {
-                        onRightBtnOnClickListener.onRightBtnClick(time);
+                        String dateTime = String.format(
+                                "%1$s-%2$s-%3$s %4$s:%5$s:%6$s",
+                                pvYear.getValue(),
+                                pvMonth.getValue(),
+                                pvDay.getValue(),
+                                pvHour.getValue(),
+                                pvMinute.getValue(),
+                                pvSecond.getValue()
+                        );
+                        String time;
+                        if (hideHour && hideMinute && hideSecond) {
+                            time = DateUtil.formatConvert(dateTime, "yyyy-MM-dd");
+                        } else if (hideSecond) {
+                            time = DateUtil.formatConvert(dateTime, "yyyy-MM-dd HH:mm");
+                        } else {
+                            time = DateUtil.formatConvert(dateTime);
+                        }
+                        onRightBtnOnClickListener.onRightBtnClick(timePickerDialog, time);
+                    } else {
+                        timePickerDialog.dismiss();
                     }
                 }
 
             });
         }
+
+        int checkedDay = day;
 
         //设置年/月/日
         private void setTime(final NumberPickerView pvYear, final NumberPickerView pvMonth,
@@ -247,12 +292,11 @@ public class TimePickerDialog extends Dialog {
         /*年*/
             List<String> yearList = new ArrayList<>();
             int START_YEAR = 1970;
-            int END_YEAR = 2100;
+            int END_YEAR = 2200;
             for (int i = START_YEAR; i <= END_YEAR; i++) {
                 yearList.add(String.valueOf(i));
             }
             years = yearList.toArray(years);
-
             pvYear.setDisplayedValues(years);
             pvYear.setMinValue(START_YEAR);
             pvYear.setMaxValue(END_YEAR);
@@ -276,10 +320,10 @@ public class TimePickerDialog extends Dialog {
                             pvDay.setMaxValue(28);
                         }
                     }
-                    if (day > pvDay.getMaxValue()) {
+                    if (checkedDay >= pvDay.getMaxValue()) {
                         pvDay.setValue(pvDay.getMaxValue());
                     } else {
-                        pvDay.setValue(day);
+                        pvDay.setValue(checkedDay);
                     }
                 }
             });
@@ -314,10 +358,10 @@ public class TimePickerDialog extends Dialog {
                             pvDay.setMaxValue(28);
                         }
                     }
-                    if (day > pvDay.getMaxValue()) {
+                    if (checkedDay >= pvDay.getMaxValue()) {
                         pvDay.setValue(pvDay.getMaxValue());
                     } else {
-                        pvDay.setValue(day);
+                        pvDay.setValue(checkedDay);
                     }
                 }
             });
@@ -331,9 +375,9 @@ public class TimePickerDialog extends Dialog {
             pvDay.setDisplayedValues(days);
             pvDay.setMinValue(1);
             // 判断大小月及是否闰年,用来确定"日"的数据
-            if (bigMonthList.contains(String.valueOf(month + 1))) {
+            if (bigMonthList.contains(String.valueOf(month))) {
                 pvDay.setMaxValue(31);
-            } else if (littleMonthList.contains(String.valueOf(month + 1))) {
+            } else if (littleMonthList.contains(String.valueOf(month))) {
                 pvDay.setMaxValue(30);
             } else {
                 // 闰年
@@ -348,6 +392,7 @@ public class TimePickerDialog extends Dialog {
                 @Override
                 public void onValueChange(NumberPickerView picker, int oldCheckedDay, int newCheckedDay) {
                     Log.d("TimePicker", String.format("日----------------------%s", newCheckedDay));
+                    checkedDay = newCheckedDay;
                 }
             });
 
@@ -439,11 +484,11 @@ public class TimePickerDialog extends Dialog {
         setCanceledOnTouchOutside(true);
     }
 
-    interface OnLeftBtnOnClickListener {
-        void onLeftBtnClick();
+    public interface OnLeftBtnOnClickListener {
+        void onLeftBtnClick(TimePickerDialog timePickerDialog);
     }
 
-    interface OnRightBtnOnClickListener {
-        void onRightBtnClick(String time);
+    public interface OnRightBtnOnClickListener {
+        void onRightBtnClick(TimePickerDialog timePickerDialog, String time);
     }
 }
