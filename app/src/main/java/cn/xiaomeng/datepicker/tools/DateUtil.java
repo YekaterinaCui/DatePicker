@@ -7,8 +7,10 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * 时间格式器
- * Created by cj on 2015/12/18.
+ * 类名：DateUtil
+ * 编辑时间：2018/2/6
+ * 编辑人：崔婧
+ * 简介：时间工具类
  */
 public class DateUtil {
 
