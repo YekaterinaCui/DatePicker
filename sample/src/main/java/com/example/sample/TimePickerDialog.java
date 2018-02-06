@@ -1,4 +1,4 @@
-package cn.xiaomeng.datepicker;
+package com.example.sample;
 
 import android.app.Dialog;
 import android.content.Context;
