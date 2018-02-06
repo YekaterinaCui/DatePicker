@@ -11,26 +11,11 @@ import cn.xiaomeng.datepicker.TimePickerDialog;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvTime;
-    private TimePickerDialog timePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
-        timePickerDialog = builder.setTime("2018-03-14 18:08:56")
-                .setLeftBtnText("清除")
-                .setRightBtnText("确定")
-                .setOnRightBtnOnClickListener(new TimePickerDialog.OnRightBtnOnClickListener() {
-                    @Override
-                    public void onRightBtnClick(TimePickerDialog timePickerDialog, String time) {
-                        timePickerDialog.dismiss();
-                        Toast.makeText(MainActivity.this, time, Toast.LENGTH_SHORT).show();
-                        tvTime.setText(time);
-                    }
-                })
-                .create(this);
-
         initView();
     }
 
@@ -39,7 +24,19 @@ public class MainActivity extends AppCompatActivity {
         tvTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timePickerDialog.show();
+                TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
+                builder.setTime("2018-03-14 18:08:56")
+                        .setLeftBtnText("清除")
+                        .setRightBtnText("确定")
+                        .setOnRightBtnOnClickListener(new TimePickerDialog.OnRightBtnOnClickListener() {
+                            @Override
+                            public void onRightBtnClick(TimePickerDialog timePickerDialog, String time) {
+                                timePickerDialog.dismiss();
+                                Toast.makeText(MainActivity.this, time, Toast.LENGTH_SHORT).show();
+                                tvTime.setText(time);
+                            }
+                        })
+                        .create(MainActivity.this).show();
             }
         });
     }

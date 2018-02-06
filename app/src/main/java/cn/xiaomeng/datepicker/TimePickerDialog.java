@@ -79,8 +79,8 @@ public class TimePickerDialog extends Dialog {
 
         private String leftBtnText = "取消";
         private String rightBtnText = "确定";
-        private Integer leftBtnTextColor = R.color.color_gray_a5a6a5;
-        private Integer rightBtnTextColor = R.color.color_gray_a5a6a5;
+        private int leftBtnTextColor = R.color.color_gray_a5a6a5;
+        private int rightBtnTextColor = R.color.color_gray_a5a6a5;
 
         private OnLeftBtnOnClickListener onLeftBtnOnClickListener;
         private OnRightBtnOnClickListener onRightBtnOnClickListener;
@@ -128,37 +128,6 @@ public class TimePickerDialog extends Dialog {
             return this;
         }
 
-//        public Builder setYear(Integer year) {
-//            this.year = year;
-//            return this;
-//        }
-//
-//        // 范围：0-11
-//        public Builder setMonth(Integer month) {
-//            this.month = month + 1;
-//            return this;
-//        }
-//
-//        public Builder setDay(Integer day) {
-//            this.day = day;
-//            return this;
-//        }
-//
-//        public Builder setHour(Integer hour) {
-//            this.hour = hour;
-//            return this;
-//        }
-//
-//        public Builder setMinute(Integer minute) {
-//            this.minute = minute;
-//            return this;
-//        }
-//
-//        public Builder setSecond(Integer second) {
-//            this.second = second;
-//            return this;
-//        }
-
         public Builder setLeftBtnText(String leftBtnText) {
             this.leftBtnText = leftBtnText;
             return this;
@@ -169,12 +138,12 @@ public class TimePickerDialog extends Dialog {
             return this;
         }
 
-        public Builder setLeftBtnTextColor(Integer leftBtnTextColor) {
+        public Builder setLeftBtnTextColor(int leftBtnTextColor) {
             this.leftBtnTextColor = leftBtnTextColor;
             return this;
         }
 
-        public Builder setRightBtnTextColor(Integer rightBtnTextColor) {
+        public Builder setRightBtnTextColor(int rightBtnTextColor) {
             this.rightBtnTextColor = rightBtnTextColor;
             return this;
         }
