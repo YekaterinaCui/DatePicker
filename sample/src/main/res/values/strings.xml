@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sample</string>
+    <string name="time_picker">时间选择器</string>
 </resources>

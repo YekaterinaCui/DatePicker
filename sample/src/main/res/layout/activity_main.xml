@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context="com.example.sample.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_time"
+    <Button
+        android:id="@+id/btn_time"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/color_green_3bb4bc" />
+        android:layout_height="60dp"
+        android:background="@color/color_green_3bb4bc"
+        android:text="@string/time_picker"
+        android:textColor="@color/color_white_ffffff" />
 
 </LinearLayout>
