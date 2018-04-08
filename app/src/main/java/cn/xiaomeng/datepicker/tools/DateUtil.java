@@ -1,5 +1,7 @@
 package cn.xiaomeng.datepicker.tools;
 
+import android.support.annotation.NonNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,7 +10,7 @@ import java.util.Locale;
 
 /**
  * 类名：DateUtil
- * 编辑时间：2018/2/6
+ * 编辑时间：2018/4/8
  * 编辑人：崔婧
  * 简介：时间工具类
  */
@@ -29,10 +31,12 @@ public class DateUtil {
         return null;
     }
 
-    public static String format(Date date, String format) {
-        if (null == format) {
-            format = "yyyy-MM-dd HH:mm:ss";
-        }
+    public static String format(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return formatter.format(date);
+    }
+
+    public static String format(Date date, @NonNull String format) {
         SimpleDateFormat formatter = new SimpleDateFormat(format, Locale.CHINA);
         return formatter.format(date);
     }
