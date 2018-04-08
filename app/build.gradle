@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 8
-        versionName "1.0.7"
+        versionCode 9
+        versionName "1.0.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -37,7 +37,7 @@ publish {
     userOrg = 'jingcui'
     groupId = 'cn.xiaomeng'
     artifactId = 'datepicker'
-    publishVersion = '1.0.7'
+    publishVersion = '1.0.8'
     desc = 'date picker'
     website = 'https://github.com/YekaterinaCui/DatePicker'
 }
