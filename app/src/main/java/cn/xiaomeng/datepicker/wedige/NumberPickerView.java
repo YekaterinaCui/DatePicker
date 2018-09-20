@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.widget.OverScroller;
 
 import cn.xiaomeng.datepicker.R;
 
@@ -165,7 +166,7 @@ public class NumberPickerView extends View {
     // scrolling or starts to scroll or stops scrolling.
     private boolean mRespondChangeInMainThread = DEFAULT_RESPOND_CHANGE_IN_MAIN_THREAD;
 
-    private ScrollerCompat mScroller;
+    private OverScroller mScroller;
     private VelocityTracker mVelocityTracker;
 
     private Paint mPaintDivider = new Paint();
@@ -295,7 +296,8 @@ public class NumberPickerView extends View {
     }
 
     private void init(Context context){
-        mScroller = ScrollerCompat.create(context);
+        mScroller = new OverScroller(context);
+        //mScroller = ScrollerCompat.create(context);
         mMiniVelocityFling = ViewConfiguration.get(getContext()).getScaledMinimumFlingVelocity();
         mScaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         if(mTextSizeNormal == 0) mTextSizeNormal = sp2px(context, DEFAULT_TEXT_SIZE_NORMAL_SP);

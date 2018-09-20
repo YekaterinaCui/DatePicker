@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
-                builder.setTime("2018-03-14 18:08:56")
+                builder.setTime("2018-03-14")
+                        .hideHour(true)
+                        .hideMinute(true)
+                        .hideSecond(true)
                         .setLeftBtnText(null)
                         .setRightBtnText("确定")
                         .setRightBtnTextColor(R.color.color_green_3bb4bc)

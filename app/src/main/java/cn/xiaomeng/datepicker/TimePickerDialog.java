@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,15 +110,19 @@ public class TimePickerDialog extends Dialog {
         }
 
         public Builder setTime(String time) {
-            Calendar timeCalender = Calendar.getInstance();
-            timeCalender.setTime(DateUtil.getDate(time));
-            this.year = timeCalender.get(Calendar.YEAR);
-            this.month = timeCalender.get(Calendar.MONTH) + 1;
-            this.day = timeCalender.get(Calendar.DAY_OF_MONTH);
-            this.hour = timeCalender.get(Calendar.HOUR_OF_DAY);
-            this.minute = timeCalender.get(Calendar.MINUTE);
-            this.second = timeCalender.get(Calendar.SECOND);
-            return this;
+            if (DateUtil.getDate(time) == null) {
+                return this;
+            } else {
+                Calendar timeCalender = Calendar.getInstance();
+                timeCalender.setTime(DateUtil.getDate(time));
+                this.year = timeCalender.get(Calendar.YEAR);
+                this.month = timeCalender.get(Calendar.MONTH) + 1;
+                this.day = timeCalender.get(Calendar.DAY_OF_MONTH);
+                this.hour = timeCalender.get(Calendar.HOUR_OF_DAY);
+                this.minute = timeCalender.get(Calendar.MINUTE);
+                this.second = timeCalender.get(Calendar.SECOND);
+                return this;
+            }
         }
 
         public Builder setLeftBtnText(String leftBtnText) {
